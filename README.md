@@ -1,0 +1,1 @@
+# plugins-one-stop-shop-woocommerce
