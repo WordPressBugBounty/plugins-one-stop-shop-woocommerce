@@ -16,7 +16,7 @@ class Package {
 	 *
 	 * @var string
 	 */
-	const VERSION = '1.6.2';
+	const VERSION = '1.6.3';
 
 	/**
 	 * Init the package
@@ -57,7 +57,7 @@ class Package {
 
 			add_action(
 				'oss_woocommerce_' . $id,
-				function( $args ) use ( $type ) {
+				function ( $args ) use ( $type ) {
 					Queue::next( $type, $args );
 				},
 				10,
@@ -102,11 +102,9 @@ class Package {
 				}
 
 				$running[] = $report_id;
-			} else {
-				if ( $report = self::get_report( $report_id ) ) {
-					if ( 'completed' !== $report->get_status() ) {
-						$report->delete();
-					}
+			} elseif ( $report = self::get_report( $report_id ) ) {
+				if ( 'completed' !== $report->get_status() ) {
+					$report->delete();
 				}
 			}
 		}
@@ -450,7 +448,7 @@ class Package {
 		if ( array_key_exists( $args['orderby'], array( 'date_start', 'date_end' ) ) ) {
 			usort(
 				$reports_sorted,
-				function( $a, $b ) use ( $args ) {
+				function ( $a, $b ) use ( $args ) {
 					if ( $a[ $args['orderby'] ] === $b[ $args['orderby'] ] ) {
 						return 0;
 					}
@@ -508,6 +506,7 @@ class Package {
 
 	public static function load_plugin_textdomain() {
 		add_filter( 'plugin_locale', array( __CLASS__, 'support_german_language_variants' ), 10, 2 );
+		add_filter( 'load_translation_file', array( __CLASS__, 'force_load_german_language_variant' ), 10, 2 );
 
 		if ( function_exists( 'determine_locale' ) ) {
 			$locale = determine_locale();
@@ -518,14 +517,44 @@ class Package {
 
 		$locale = apply_filters( 'plugin_locale', $locale, 'one-stop-shop-woocommerce' );
 
-		unload_textdomain( 'one-stop-shop-woocommerce' );
 		load_textdomain( 'one-stop-shop-woocommerce', trailingslashit( WP_LANG_DIR ) . 'one-stop-shop-woocommerce/one-stop-shop-woocommerce-' . $locale . '.mo' );
 		load_plugin_textdomain( 'one-stop-shop-woocommerce', false, plugin_basename( self::get_path() ) . '/i18n/languages/' );
 	}
 
+	/**
+	 * Use a tweak to force loading german language variants in WP 6.5
+	 * as WP does not allow using the plugin_locale filter to load a plugin-specific locale any longer.
+	 *
+	 * @param $file
+	 * @param $domain
+	 *
+	 * @return mixed
+	 */
+	public static function force_load_german_language_variant( $file, $domain ) {
+		if ( 'one-stop-shop-woocommerce' === $domain && function_exists( 'determine_locale' ) && class_exists( 'WP_Translation_Controller' ) ) {
+			$locale     = determine_locale();
+			$new_locale = self::get_german_language_variant( $locale );
+
+			if ( $new_locale !== $locale ) {
+				$i18n_controller = \WP_Translation_Controller::get_instance();
+				$i18n_controller->load_file( $file, $domain, $locale ); // Force loading the determined file in the original locale.
+			}
+		}
+
+		return $file;
+	}
+
+	protected static function get_german_language_variant( $locale ) {
+		if ( apply_filters( 'oss_woocommerce_force_de_language', in_array( $locale, array( 'de_CH', 'de_CH_informal', 'de_AT' ), true ) ) ) {
+			$locale = apply_filters( 'oss_woocommerce_german_language_variant_locale', 'de_DE' );
+		}
+
+		return $locale;
+	}
+
 	public static function support_german_language_variants( $locale, $domain ) {
-		if ( 'one-stop-shop-woocommerce' === $domain && apply_filters( 'oss_woocommerce_force_de_language', in_array( $locale, array( 'de_CH', 'de_AT' ), true ) ) ) {
-			$locale = 'de_DE';
+		if ( 'one-stop-shop-woocommerce' === $domain ) {
+			$locale = self::get_german_language_variant( $locale );
 		}
 
 		return $locale;
@@ -543,8 +572,8 @@ class Package {
 		return $emails;
 	}
 
-	protected static function sanitize_email_class( $class ) {
-		return 'oss_woocommerce_' . sanitize_key( str_replace( __NAMESPACE__ . '\\', '', $class ) );
+	protected static function sanitize_email_class( $classname ) {
+		return 'oss_woocommerce_' . sanitize_key( str_replace( __NAMESPACE__ . '\\', '', $classname ) );
 	}
 
 	public static function observer_report_needs_notification() {
