@@ -4,8 +4,8 @@ Tags: one stop shop, woocommerce, OSS, EU, compliance
 Requires at least: 5.4
 Tested up to: 6.7
 WC requires at least: 3.9
-WC tested up to: 9.4.3
-Stable tag: 1.6.3
+WC tested up to: 9.6
+Stable tag: 1.6.4
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -14,7 +14,7 @@ The One Stop Shop compliance helper allows you to easily monitor your One Stop S
 
 == Description ==
 
-One Stop Shop for WooCommerce adds compliance with the new [One Stop Shop procedure](https://ec.europa.eu/taxation_customs/business/vat/oss_en) of the european union to WooCommerce.
+One Stop Shop for WooCommerce adds compliance with the new [One Stop Shop procedure](https://vat-one-stop-shop.ec.europa.eu) of the european union to WooCommerce.
 With the help of this little plugin you may easily monitor the delivery threshold (10.000 €) for B2C exports to other EU countries. Furthermore you may generate tax reports (e.g. quarterly, monthly, yearly) applicable to the OSS procedure and export them as CSV to easily notify your local tax authorities about your sales.
 
 * *Delivery Threshold Observation* - The plugin may automatically observe the yearly delivery threshold and send notices by email and via the admin panel in case the threshold is close to being reached.
@@ -61,6 +61,9 @@ Bug reports may be filed via our [GitHub repository](https://github.com/vendider
 3. Create a new report
 
 == Changelog ==
+= 1.6.4 =
+* Improvement: Updated FI tax rates
+
 = 1.6.3 =
 * New: Indicate WP latest + Woo latest support
 * Improvement: Local pickup detection

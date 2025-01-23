@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'vendidero/one-stop-shop-woocommerce',
-        'pretty_version' => '1.6.3',
-        'version' => '1.6.3.0',
+        'pretty_version' => '1.6.4',
+        'version' => '1.6.4.0',
         'reference' => null,
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
@@ -41,8 +41,8 @@
             ),
         ),
         'vendidero/one-stop-shop-woocommerce' => array(
-            'pretty_version' => '1.6.3',
-            'version' => '1.6.3.0',
+            'pretty_version' => '1.6.4',
+            'version' => '1.6.4.0',
             'reference' => null,
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
@@ -50,9 +50,9 @@
             'dev_requirement' => false,
         ),
         'vendidero/woocommerce-eu-tax-helper' => array(
-            'pretty_version' => '2.0.5',
-            'version' => '2.0.5.0',
-            'reference' => '75d53618e742125bcaa91bf429590f6091a31183',
+            'pretty_version' => '2.0.6',
+            'version' => '2.0.6.0',
+            'reference' => 'cae237ba7128b5b28029111ca7096e156d684553',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../libs/woocommerce-eu-tax-helper',
             'aliases' => array(),
