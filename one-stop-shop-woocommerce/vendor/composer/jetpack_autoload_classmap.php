@@ -483,67 +483,67 @@ return array(
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-shutdown-handler.php'
 	),
 	'Vendidero\\EUTaxHelper\\Helper' => array(
-		'version' => '2.0.6.0',
+		'version' => '2.0.7.0',
 		'path'    => $baseDir . '/libs/woocommerce-eu-tax-helper/src/Helper.php'
 	),
 	'Vendidero\\OneStopShop\\Admin' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/Admin.php'
 	),
 	'Vendidero\\OneStopShop\\AdminNote' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/AdminNote.php'
 	),
 	'Vendidero\\OneStopShop\\AsyncReportGenerator' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/AsyncReportGenerator.php'
 	),
 	'Vendidero\\OneStopShop\\CSVExporter' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/CSVExporter.php'
 	),
 	'Vendidero\\OneStopShop\\CSVExporterBOP' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/CSVExporterBOP.php'
 	),
 	'Vendidero\\OneStopShop\\DeliveryThresholdEmailNotification' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/DeliveryThresholdEmailNotification.php'
 	),
 	'Vendidero\\OneStopShop\\DeliveryThresholdWarning' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/DeliveryThresholdWarning.php'
 	),
 	'Vendidero\\OneStopShop\\Install' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/Install.php'
 	),
 	'Vendidero\\OneStopShop\\Package' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/Package.php'
 	),
 	'Vendidero\\OneStopShop\\Queue' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/Queue.php'
 	),
 	'Vendidero\\OneStopShop\\Report' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/Report.php'
 	),
 	'Vendidero\\OneStopShop\\ReportTable' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/ReportTable.php'
 	),
 	'Vendidero\\OneStopShop\\Settings' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/Settings.php'
 	),
 	'Vendidero\\OneStopShop\\SettingsPage' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/SettingsPage.php'
 	),
 	'Vendidero\\OneStopShop\\Tax' => array(
-		'version' => '1.6.4.0',
+		'version' => '1.7.0.0',
 		'path'    => $baseDir . '/src/Tax.php'
 	),
 	'Version_Loader' => array(
