@@ -16,7 +16,7 @@ class Package {
 	 *
 	 * @var string
 	 */
-	const VERSION = '1.7.1';
+	const VERSION = '1.8.0';
 
 	/**
 	 * Init the package
@@ -148,7 +148,7 @@ class Package {
 					continue;
 				}
 
-				$year = $observer->get_date_start()->format( 'Y' );
+				$year = $observer->get_date_start()->date_i18n( 'Y' );
 
 				/**
 				 * Delete orphan observer reports (reports not linked as a main observer for a certain year).
@@ -163,7 +163,7 @@ class Package {
 		 * In case the current observer report does not exist - delete the option
 		 */
 		if ( self::enable_auto_observer() ) {
-			$year      = date( 'Y' ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+			$year      = date_i18n( 'Y' ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 			$report_id = get_option( 'oss_woocommerce_observer_report_' . $year );
 
 			if ( ! empty( $report_id ) ) {
@@ -258,7 +258,7 @@ class Package {
 	 */
 	public static function get_observer_report( $year = null ) {
 		if ( is_null( $year ) ) {
-			$year = date( 'Y' ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+			$year = date_i18n( 'Y' ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 		}
 
 		$report_id = get_option( 'oss_woocommerce_observer_report_' . $year );
@@ -352,17 +352,17 @@ class Package {
 			$parts,
 			array(
 				'type'       => 'daily',
-				'date_start' => date( 'Y-m-d' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
-				'date_end'   => date( 'Y-m-d' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+				'date_start' => date_i18n( 'Y-m-d' ),
+				'date_end'   => date_i18n( 'Y-m-d' ),
 			)
 		);
 
 		if ( is_a( $parts['date_start'], 'WC_DateTime' ) ) {
-			$parts['date_start'] = $parts['date_start']->format( 'Y-m-d' );
+			$parts['date_start'] = $parts['date_start']->date_i18n( 'Y-m-d' );
 		}
 
 		if ( is_a( $parts['date_end'], 'WC_DateTime' ) ) {
-			$parts['date_end'] = $parts['date_end']->format( 'Y-m-d' );
+			$parts['date_end'] = $parts['date_end']->date_i18n( 'Y-m-d' );
 		}
 
 		return 'oss_' . $parts['type'] . '_report_' . $parts['date_start'] . '_' . $parts['date_end'];
@@ -453,6 +453,7 @@ class Package {
 				'limit'            => -1,
 				'offset'           => 0,
 				'orderby'          => 'date_start',
+				'order'            => 'DESC',
 				'include_observer' => false,
 			)
 		);
@@ -471,7 +472,7 @@ class Package {
 			$reports_sorted[] = self::get_report_data( $id );
 		}
 
-		if ( array_key_exists( $args['orderby'], array( 'date_start', 'date_end' ) ) ) {
+		if ( in_array( $args['orderby'], array( 'date_start', 'date_end' ), true ) ) {
 			usort(
 				$reports_sorted,
 				function ( $a, $b ) use ( $args ) {
@@ -479,7 +480,11 @@ class Package {
 						return 0;
 					}
 
-					return $a[ $args['orderby'] ] < $b[ $args['orderby'] ] ? -1 : 1;
+					if ( 'ASC' === $args['order'] ) {
+						return $a[ $args['orderby'] ] < $b[ $args['orderby'] ] ? -1 : 1;
+					} else {
+						return $a[ $args['orderby'] ] > $b[ $args['orderby'] ] ? -1 : 1;
+					}
 				}
 			);
 		}
