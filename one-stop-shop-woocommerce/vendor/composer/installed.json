@@ -210,17 +210,17 @@
         },
         {
             "name": "vendidero/woocommerce-eu-tax-helper",
-            "version": "2.0.7",
-            "version_normalized": "2.0.7.0",
+            "version": "2.0.8",
+            "version_normalized": "2.0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vendidero/woocommerce-eu-tax-helper.git",
-                "reference": "a6861d57e49ed01a85a2020b84042305d17766e4"
+                "reference": "95158ef45418a35fe9ca56b408abc9f3ba17edea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vendidero/woocommerce-eu-tax-helper/zipball/a6861d57e49ed01a85a2020b84042305d17766e4",
-                "reference": "a6861d57e49ed01a85a2020b84042305d17766e4",
+                "url": "https://api.github.com/repos/vendidero/woocommerce-eu-tax-helper/zipball/95158ef45418a35fe9ca56b408abc9f3ba17edea",
+                "reference": "95158ef45418a35fe9ca56b408abc9f3ba17edea",
                 "shasum": ""
             },
             "require": {
@@ -231,7 +231,7 @@
                 "myclabs/deep-copy": "^1.7.0",
                 "woocommerce/woocommerce-sniffs": "^1.0.0"
             },
-            "time": "2025-02-07T10:21:15+00:00",
+            "time": "2025-08-25T08:51:35+00:00",
             "type": "wordpress-plugin",
             "installation-source": "dist",
             "autoload": {
@@ -259,7 +259,7 @@
             "description": "EU tax helper for WooCommerce",
             "homepage": "https://vendidero.de/",
             "support": {
-                "source": "https://github.com/vendidero/woocommerce-eu-tax-helper/tree/v2.0.7",
+                "source": "https://github.com/vendidero/woocommerce-eu-tax-helper/tree/v2.0.8",
                 "issues": "https://github.com/vendidero/woocommerce-eu-tax-helper/issues"
             },
             "install-path": "../../libs/woocommerce-eu-tax-helper"
